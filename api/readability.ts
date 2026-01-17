@@ -26,7 +26,7 @@ type ApiResponse = ReadabilityResult | ErrorResult;
 
 export default async function handler(
   req: VercelRequest,
-  res: VercelResponse<ApiResponse>
+  res: VercelResponse
 ) {
   // 只允许 GET 和 POST
   if (req.method !== 'GET' && req.method !== 'POST') {
