@@ -1,0 +1,23 @@
+{
+  "name": "readability-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel",
+    "deploy:prod": "vercel --prod"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.5.0",
+    "jsdom": "^26.0.0",
+    "turndown": "^7.2.0"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^22.10.0",
+    "@types/turndown": "^5.0.5",
+    "typescript": "^5.7.0",
+    "vercel": "^39.0.0"
+  }
+}
