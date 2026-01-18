@@ -5,42 +5,21 @@ import TurndownService from 'turndown';
 
 const USER_AGENT = 'Mozilla/5.0 (compatible; ReadabilityAPI/1.0)';
 
-type ReadabilityResult = {
-  success: true;
-  data: {
-    title: string;
-    byline: string | null;
-    excerpt: string | null;
-    siteName: string | null;
-    markdown: string;
-    length: number;
-  };
-};
-
-type ErrorResult = {
-  success: false;
-  error: string;
-};
-
-type ApiResponse = ReadabilityResult | ErrorResult;
 
 export default async function handler(
   req: VercelRequest,
   res: VercelResponse
 ) {
-  // 只允许 GET 和 POST
-  if (req.method !== 'GET' && req.method !== 'POST') {
+  // 只允许 GET
+  if (req.method !== 'GET') {
     return res.status(405).json({
       success: false,
-      error: 'Method not allowed. Use GET or POST.',
+      error: 'Method not allowed. Use GET.',
     });
   }
 
   // 获取 URL 参数
-  const targetUrl =
-    req.method === 'GET'
-      ? (req.query.url as string)
-      : (req.body?.url as string);
+  const targetUrl = req.query.url as string;
 
   if (!targetUrl) {
     return res.status(400).json({

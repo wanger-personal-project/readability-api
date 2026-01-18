@@ -6,25 +6,18 @@
 
 - 输入任意网页 URL，返回提取的正文内容（Markdown 格式）
 - 自动提取标题、作者、摘要等元信息
-- 支持 GET 和 POST 请求
+- 简洁的 URL 调用方式
 
 ## API 使用
 
 ### 请求
 
-**GET 方式：**
+**简洁方式（推荐）：**
 
 ```
-GET /api/readability?url=https://example.com/article
+https://your-project.vercel.app/https://example.com/article
 ```
 
-**POST 方式：**
-
-```bash
-curl -X POST https://your-project.vercel.app/api/readability \
-  -H "Content-Type: application/json" \
-  -d '{"url": "https://example.com/article"}'
-```
 
 ### 响应
 
@@ -59,7 +52,7 @@ curl -X POST https://your-project.vercel.app/api/readability \
 |--------|------|
 | 200 | 成功 |
 | 400 | 参数错误（缺少 url 或 url 格式无效） |
-| 405 | 方法不允许（仅支持 GET/POST） |
+| 405 | 方法不允许（仅支持 GET） |
 | 422 | 无法提取内容（页面没有可识别的正文） |
 | 502 | 目标 URL 请求失败 |
 | 500 | 服务器内部错误 |
@@ -103,9 +96,9 @@ curl -X POST https://your-project.vercel.app/api/readability \
    https://readability-api-xxx.vercel.app
    ```
 
-   API 地址为：
+   直接访问：
    ```
-   https://readability-api-xxx.vercel.app/api/readability?url=...
+   https://readability-api-xxx.vercel.app/https://example.com/article
    ```
 
 ### 方式二：通过 Vercel CLI 部署
@@ -141,7 +134,7 @@ curl -X POST https://your-project.vercel.app/api/readability \
 
    本地服务启动后访问：
    ```
-   http://localhost:3000/api/readability?url=https://example.com
+   http://localhost:3000/https://example.com
    ```
 
 5. **部署到 Preview 环境**
@@ -174,7 +167,7 @@ npm install
 npm run dev
 
 # 测试 API
-curl "http://localhost:3000/api/readability?url=https://example.com"
+curl "http://localhost:3000/https://example.com"
 ```
 
 ---
